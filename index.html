@@ -1,0 +1,51 @@
+<!-- simple annotorious example -->
+<style>body { background-color: #EEE; }</style>
+<img src="banner.png" id="myImage" class="annotatable" />
+<link type="text/css" rel="stylesheet" href="http://annotorious.github.com/latest/annotorious.css" />
+<script type="text/javascript" src="http://annotorious.github.com/latest/annotorious.min.js"></script>
+
+<!-- apply anno-colors -->
+<script type="text/javascript" src="./anno-colors.js"></script>
+<script>
+  var color_list = [
+    { label: 'positive', color: 'lime' },
+    { label: 'negative', color: 'red' },
+    { label: 'not-sure', color: 'blue' },
+  ];
+  window.onload = function(){
+    // init anno-colors
+    window.anno_colors = new AnnoColors('#myImage', color_list);
+
+    // draw color annotations
+    anno_colors.addAnnotation('red', {
+      src : document.querySelector('#myImage').src,
+      text: 'Test red color',
+      shapes : [{
+        type : 'rect',
+        units: 'pixel',
+        geometry : { x : 100, y: 100, width : 100, height: 100 }
+      }]
+    });
+    anno_colors.addAnnotation('lime', {
+      src : document.querySelector('#myImage').src,
+      text: 'Test green color',
+      shapes : [{
+        type : 'rect',
+        units: 'pixel',
+        geometry : { x : 200, y: 200, width : 100, height: 100 }
+      }]
+    });
+    anno_colors.addAnnotation('blue', {
+      src : document.querySelector('#myImage').src,
+      text: 'Test blue color',
+      shapes : [{
+        type : 'rect',
+        units: 'pixel',
+        geometry : { x : 300, y: 300, width : 100, height: 100 }
+      }]
+    });
+
+    // print annotations group by color
+    console.log(anno_colors.getAnnotations());
+  };
+</script>
