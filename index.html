@@ -7,17 +7,20 @@
 <!-- apply anno-colors -->
 <script type="text/javascript" src="./anno-colors.js"></script>
 <script>
-  var color_list = [
-    { label: 'positive', color: 'lime' },
-    { label: 'negative', color: 'red' },
-    { label: 'not-sure', color: 'blue' },
-  ];
   window.onload = function(){
-    // init anno-colors
-    window.anno_colors = new AnnoColors('#myImage', color_list);
+
+    anno.addPlugin('ColorPlugin', {
+      img_id: 'myImage',
+      color_list: [
+        { label: 'positive', color: 'lime' },
+        { label: 'negative', color: 'red' },
+        { label: 'not-sure', color: 'blue' },
+      ],
+      // controller: false,
+    });
 
     // draw color annotations
-    anno_colors.addAnnotation('red', {
+    anno.addColorAnnotation('red', {
       src : document.querySelector('#myImage').src,
       text: 'Test red color',
       shapes : [{
@@ -26,7 +29,7 @@
         geometry : { x : 100, y: 100, width : 100, height: 100 }
       }]
     });
-    anno_colors.addAnnotation('lime', {
+    anno.addColorAnnotation('lime', {
       src : document.querySelector('#myImage').src,
       text: 'Test green color',
       shapes : [{
@@ -35,7 +38,7 @@
         geometry : { x : 200, y: 200, width : 100, height: 100 }
       }]
     });
-    anno_colors.addAnnotation('blue', {
+    anno.addColorAnnotation('blue', {
       src : document.querySelector('#myImage').src,
       text: 'Test blue color',
       shapes : [{
@@ -46,6 +49,6 @@
     });
 
     // print annotations group by color
-    console.log(anno_colors.getAnnotations());
+    console.log(anno.getColorAnnotations());
   };
 </script>
