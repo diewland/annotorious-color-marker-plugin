@@ -1,9 +1,9 @@
-# anno-colors
+# annotorious-color-marker-plugin
 Draw annotorious in color
 
 ### Demo
 
-* https://diewland.github.io/anno-colors/
+* https://diewland.github.io/annotorious-color-marker-plugin/
 
 ### Usage
 
