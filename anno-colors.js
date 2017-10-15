@@ -104,13 +104,15 @@ annotorious.plugin.ColorPlugin.prototype.initPlugin = function(anno) {
   // get annotations by color
   anno.getColorAnnotations = function(){
     var annos = {};
-    that.color_list.forEach(function(m){
-      annos[m.label] = [];
-    });
     anno.getAnnotations().forEach(function(an){
       var c = an.shapes[0].style.stroke;
-      var l = color2label[c];
-      annos[l].push(an);
+      var l = color2label[c] || 'no-label';
+      if(!annos[l]){
+        annos[l] = [ an ];
+      }
+      else {
+        annos[l].push(an);
+      }
     });
     return annos;
   };

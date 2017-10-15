@@ -19,7 +19,7 @@ anno.addPlugin('ColorPlugin', {
 });
 
 // draw color annotations
-anno.addColorAnnotation('red', {            // color must be in color_list
+anno.addColorAnnotation('red', {
   src : document.querySelector('#myImage').src,
   text: 'Test red color',
   shapes : [{

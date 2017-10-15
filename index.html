@@ -20,33 +20,19 @@
     });
 
     // draw color annotations
-    anno.addColorAnnotation('red', {
-      src : document.querySelector('#myImage').src,
-      text: 'Test red color',
-      shapes : [{
-        type : 'rect',
-        units: 'pixel',
-        geometry : { x : 100, y: 100, width : 100, height: 100 }
-      }]
-    });
-    anno.addColorAnnotation('lime', {
-      src : document.querySelector('#myImage').src,
-      text: 'Test green color',
-      shapes : [{
-        type : 'rect',
-        units: 'pixel',
-        geometry : { x : 200, y: 200, width : 100, height: 100 }
-      }]
-    });
-    anno.addColorAnnotation('blue', {
-      src : document.querySelector('#myImage').src,
-      text: 'Test blue color',
-      shapes : [{
-        type : 'rect',
-        units: 'pixel',
-        geometry : { x : 300, y: 300, width : 100, height: 100 }
-      }]
-    });
+    var demo_colors = ['red', 'lime', 'blue', 'yellow', 'pink'];
+    for(var i=0; i<demo_colors.length; i++){
+      var xy = i*100;
+      anno.addColorAnnotation(demo_colors[i], {
+        src : document.querySelector('#myImage').src,
+        text: 'Test color annotation #'+ (i+1),
+        shapes : [{
+          type : 'rect',
+          units: 'pixel',
+          geometry : { x : xy, y: xy, width : 100, height: 100 }
+        }]
+      });
+    }
 
     // print annotations group by color
     console.log(anno.getColorAnnotations());
